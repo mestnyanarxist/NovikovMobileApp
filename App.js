@@ -1,5 +1,5 @@
-import { ApolloProvider } from "@apollo/client";
-import { WelcomeScreen } from "./screens/WelcomeScreen";
+import { ApolloProvider } from '@apollo/client';
+import { WelcomeScreen } from './screens/WelcomeScreen';
 import { apolloClient } from './services/ApolloClient';
 
 export default function App() {
