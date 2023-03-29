@@ -1,5 +1,9 @@
-import { gql, useQuery } from '@apollo/client'
+import { gql, useLazyQuery, useQuery } from '@apollo/client'
+import { View } from 'react-native';
 
+import { DatePicker } from '../../components/DatePicker';
+
+//Получение данных текстом
 const GET_EVENT = gql`
     query getEvent {
         event(id:10) {
@@ -24,3 +28,38 @@ export function DataReturn() {
     return ( text )
   }
 
+//Получение данных через DatePicker
+const GET_EVENT_DATE = gql`
+  query getEventDate($year: Int, $month: Int, $day: Int) {
+    eventDate(year: $year, month: $month, day: $day) {
+        name
+        description
+    }
+  }
+`;
+
+export const DateSelect = () => {
+    const [loadEvent, { loading, data }] = useLazyQuery(GET_EVENT_DATE);
+ 
+    const handleConfirmDatePicker = (value) => {
+        loadEvent({
+            variables: {
+                year: value,
+                month: value,
+                day: value,
+            },
+        });
+    };
+
+    if (loading) return 'Loading...';
+    if (error) return `Error! ${error.message}`;
+
+    const text = data.event.description;
+
+    return(
+        <View>
+            <DatePicker onConfirm={handleConfirmDatePicker}/>
+            {text}
+        </View>
+    );
+};
