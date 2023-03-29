@@ -21,13 +21,6 @@ export function DataReturn() {
 
     console.log(text);
 
-    return (
-        <View>
-            
-            <Text>
-                {text}
-            </Text>   
-        </View>             
-    )
+    return ( text )
   }
 

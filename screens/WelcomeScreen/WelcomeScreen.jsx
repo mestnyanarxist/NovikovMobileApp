@@ -1,5 +1,5 @@
 import { StyleSheet, View, Text} from 'react-native'
-import { DataReturn } from '../../components/DataPicker'
+import { DataReturn } from '../../components/DataParcer'
 
 const styles = StyleSheet.create({
     container:{
@@ -16,9 +16,12 @@ const styles = StyleSheet.create({
 export const WelcomeScreen = () => {
 
     return (
-    <View style={styles.container}> 
-        <Text>Привет!</Text>       
-        <DataReturn/>  
+    <View style={styles.container}>      
+        <Text style={{fontWeight: 'bold'}}>
+            Результат обращения к серверу:                    
+        </Text>
+        <Text style={{fontWeight: 'normal'}}>
+                {DataReturn()}</Text>    
     </View>
     )
 }
