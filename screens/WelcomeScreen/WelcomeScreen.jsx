@@ -16,7 +16,8 @@ const styles = StyleSheet.create({
 export const WelcomeScreen = () => {
 
     return (
-    <View style={styles.container}>        
+    <View style={styles.container}> 
+        <Text>Привет!</Text>       
         <DataReturn/>  
     </View>
     )
