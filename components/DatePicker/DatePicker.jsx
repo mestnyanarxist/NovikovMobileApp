@@ -1,22 +1,22 @@
 import { Button, DatePicker as AntdDatePicker } from "antd-mobile";
 import { useState } from "react";
 import { View } from "react-native";
+import { styles } from '../../Styles/ScreenStyle'
 
 export const DatePicker = ({onConfirm}) => {
     const [visible, setVisible] = useState(false);
     return (
-        <View>
+        <View style={styles.container}>
             <Button onClick={() => setVisible(true)}>
                 Выбрыть дату
             </Button>
-            <AntdDatePicker>
+            <AntdDatePicker
                 title = "Календарь"
-                visible=[visible]
-                onClose={() => {
+                visible = {visible}
+                onClose = {() => {
                     setVisible(false);
                 }}
-                onConfirm = {onConfirm}
-            </AntdDatePicker>
+                onConfirm = {onConfirm} />
         </View>
     )
 }

@@ -1,17 +1,5 @@
-import { StyleSheet, View, Text} from 'react-native'
+import { styles } from '../../Styles/ScreenStyle'
 import { DataReturn } from '../../components/DataParcer'
-
-const styles = StyleSheet.create({
-    container:{
-        flex: 1,
-        backgroundColor: "white",
-        alignItems: 'center',
-        justifyContent: 'center',
-        textDecorationColor: 'black',
-        fontWeight: 'italic',
-        textAlign: 'center',
-    }
-})
 
 export const WelcomeScreen = () => {
 
