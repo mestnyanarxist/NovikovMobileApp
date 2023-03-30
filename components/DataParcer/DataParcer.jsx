@@ -49,34 +49,41 @@ const GET_EVENT_DATE = gql`
 `;
 
 export const DateSelect = () => {
-    const [loadEvent, { loading, error, data }] = useLazyQuery(GET_EVENT_DATE);
-    //console.log(data.eventDate.description)
-
+    const [loadEvent, { loading, error, data}] = useLazyQuery(GET_EVENT_DATE)
+    
     const handleConfirmDatePicker = (value) => {
        
         console.log(value)
                
         loadEvent({
             variables: {
-                year: DatePicker.onConfirm,
-                month: DatePicker.onConfirm,
-                day: DatePicker.onConfirm,
-            },
-        });
+                year: Number(value[0]),
+                month:  Number(value[1]),
+                day:  Number(value[2]),
+            },            
+        });         
     };    
 
-    const LoadFun = () => {
+    console.log(data)   
+
+    function LoadFun(){
         if (loading) return 'Loading...';
         if (error) return `Error! ${error.message}`;
-        if (data) return data.eventDate.description ;             
-    }    
+        
+        if(data != null ) return data.eventDate.map((item, index) =>{
+            return (
+            <Text key = {index} style={{paddingBottom: 20}}>
+                {item.description}
+            </Text>
+            )
+        }) 
+               
+    }   
 
     return(
         <View>
           <DatePicker onConfirm={handleConfirmDatePicker}/>
-          <br></br>
-          <br></br>
-          <Text style={{fontWeight: 'bold'}}> Ответ с сервера: </Text>
+          <Text style={{fontWeight: 'bold', paddingTop: 5}}> Ответ с сервера: </Text>
           <LoadFun/>    
         </View>                      
     );
