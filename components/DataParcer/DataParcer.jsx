@@ -1,9 +1,11 @@
 import { gql, useLazyQuery, useQuery } from '@apollo/client'
 import { View, Text } from 'react-native';
+import { styles } from '../../Styles/ScreenStyle'
 
 import { DatePicker } from '../../components/DatePicker';
 
 //Получение данных текстом
+
 const GET_EVENT = gql`
     query getEvent {
         event(id:10) {
@@ -16,7 +18,6 @@ const GET_EVENT = gql`
 
 export function DataReturn() {
     const { loading, error, data } = useQuery(GET_EVENT);
-    let i = 0;
 
     if (loading) return 'Loading...';
     if (error) return `Error! ${error.message}`;
@@ -35,7 +36,7 @@ export function DataReturn() {
             </Text>    
         </View>
     )
-  }
+};
 
 //Получение данных через DatePicker
 const GET_EVENT_DATE = gql`
@@ -48,24 +49,35 @@ const GET_EVENT_DATE = gql`
 `;
 
 export const DateSelect = () => {
-    const [loadEvent, { loading, data }] = useLazyQuery(GET_EVENT_DATE);
- 
+    const [loadEvent, { loading, error, data }] = useLazyQuery(GET_EVENT_DATE);
+    //console.log(data.eventDate.description)
+
     const handleConfirmDatePicker = (value) => {
+       
+        console.log(value)
+               
         loadEvent({
             variables: {
-                year: value,
-                month: value,
-                day: value,
+                year: DatePicker.onConfirm,
+                month: DatePicker.onConfirm,
+                day: DatePicker.onConfirm,
             },
         });
-    };
+    };    
 
-    /*const text = data.event.description
+    const LoadFun = () => {
+        if (loading) return 'Loading...';
+        if (error) return `Error! ${error.message}`;
+        if (data) return data.eventDate.description ;             
+    }    
 
-    if (loading) return 'Loading...'
-    if (error) return `Error! ${error.message}`*/    
-
-    return(       
-        <DatePicker onConfirm={handleConfirmDatePicker}/>       
+    return(
+        <View>
+          <DatePicker onConfirm={handleConfirmDatePicker}/>
+          <br></br>
+          <br></br>
+          <Text style={{fontWeight: 'bold'}}> Ответ с сервера: </Text>
+          <LoadFun/>    
+        </View>                      
     );
 };
