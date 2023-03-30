@@ -4,7 +4,7 @@ import { View } from "react-native";
 import { styles } from '../../Styles/ScreenStyle'
 
 export const DatePicker = ({onConfirm}) => {
-    const [visible, setVisible] = useState(false);
+    const [visible, setVisible] = useState(false)
     return (
         <View>
             <Button onClick={() => setVisible(true)}>
@@ -13,8 +13,7 @@ export const DatePicker = ({onConfirm}) => {
             <Picker
                 title = "Календарь"
                 visible = {visible}
-                colums = {(value) => {
-                    return [
+                colums = {(value) => {[
                         [
                             {label: "1941", value: "1941"},
                             {label: "1942", value: "1942"},
@@ -62,12 +61,12 @@ export const DatePicker = ({onConfirm}) => {
                             {label: "1", value: "1"},
 
                         ],                        
-                    ];
+                    ]
                 }}
                 onClose = {() => {
                     setVisible(false);
                 }}
-                onConfirm = {onConfirm} />
+                onConfirm ={onConfirm} />
         </View>
     )
 }

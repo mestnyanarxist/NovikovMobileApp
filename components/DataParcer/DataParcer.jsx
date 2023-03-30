@@ -60,15 +60,12 @@ export const DateSelect = () => {
         });
     };
 
-    if (loading) return 'Loading...';
-    if (error) return `Error! ${error.message}`;
+    /*const text = data.event.description
 
-    const text = data.event.description;
+    if (loading) return 'Loading...'
+    if (error) return `Error! ${error.message}`*/    
 
-    return(
-        <View>
-            <DatePicker onConfirm={handleConfirmDatePicker}/>
-            {text}
-        </View>
+    return(       
+        <DatePicker onConfirm={handleConfirmDatePicker}/>       
     );
 };

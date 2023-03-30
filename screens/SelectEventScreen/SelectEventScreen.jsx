@@ -5,7 +5,7 @@ import { DateSelect } from "../../components/DataParcer";
 
 export const SelectEventScreen = () => {
     return (
-        <View>
+        <View style={styles.container}>
             <DateSelect/>
         </View>
     );
