@@ -1,5 +1,5 @@
 import { gql, useLazyQuery, useQuery } from '@apollo/client'
-import { View } from 'react-native';
+import { View, Text } from 'react-native';
 
 import { DatePicker } from '../../components/DatePicker';
 
@@ -25,7 +25,16 @@ export function DataReturn() {
 
     console.log(text);
 
-    return ( text )
+    return ( 
+        <View>
+            <Text style={{fontWeight: 'bold'}}>
+                Результат обращения к серверу:                    
+            </Text>
+            <Text style={{fontWeight: 'normal'}}>
+                {text}
+            </Text>    
+        </View>
+    )
   }
 
 //Получение данных через DatePicker

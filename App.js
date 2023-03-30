@@ -6,15 +6,15 @@ import { WelcomeScreen } from './screens/WelcomeScreen';
 import { SelectEventScreen } from './screens/SelectEventScreen';
 import { apolloClient } from './services/ApolloClient';
 
-/*export default function App() {
+export default function App() {
   return(
     <ApolloProvider client={apolloClient}>
       <WelcomeScreen/>
     </ApolloProvider>
   )
-}*/
+}
 
-export default function App() {
+/*export default function App() {
   return(
     <ApolloProvider client={apolloClient}>
       <ConfigProvider locale={enUS}>
@@ -22,4 +22,4 @@ export default function App() {
       </ConfigProvider>           
     </ApolloProvider>
   );
-}
+}*/
