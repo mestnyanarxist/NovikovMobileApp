@@ -53,7 +53,7 @@ export const DateSelect = () => {
     
     const handleConfirmDatePicker = (value) => {
        
-        console.log(value)
+        //console.log(value)
                
         loadEvent({
             variables: {
