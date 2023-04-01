@@ -71,10 +71,10 @@ export const DateSelect = () => {
         if (error) return `Error! ${error.message}`;
         
         if(data != null ) return data.eventDate.map((item, index) =>{
-            return (
-            <Text key = {index} style={{paddingBottom: 20}}>
+            return (                
+            <Text key = {index} style={{paddingBottom: 20, overflow: scrollX }}>
                 {item.description}
-            </Text>
+            </Text>            
             )
         }) 
                
